@@ -1,0 +1,8 @@
+openai>=1.30
+crewai>=0.80
+chromadb>=0.5
+sentence-transformers>=3.0
+fastapi>=0.110
+uvicorn>=0.29
+streamlit>=1.35
+requests>=2.31

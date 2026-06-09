@@ -1,0 +1,410 @@
+[
+  {
+    "id": "app-f91e1d4c",
+    "name": "CoreBillingLedger-646",
+    "archetype": "LEGACY_MONOLITH",
+    "language": "Java 7",
+    "runtime_version": "1.7.0_80",
+    "criticality": "MISSION_CRITICAL",
+    "owner_team": "HR Services Tech DevTeam",
+    "age_years": 18,
+    "monthly_cost_usd": 41200,
+    "last_major_update_years_ago": 9,
+    "business_description": "Core billing ledger processing HR payroll transactions. High-volume batch processing tightly coupled to downstream settlement systems. No active development roadmap.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "RedHat Enterprise Linux 6",
+      "os_eol_date": "2020-11-30",
+      "location": "On-Prem East"
+    },
+    "security": {
+      "cve_count": 11,
+      "critical_cve_count": 8,
+      "sample_cves": [
+        "CVE-2021-44228 (Log4Shell RCE, CVSS 9.8)",
+        "CVE-2020-1472 (Zerologon Privilege Escalation, CVSS 10)",
+        "CVE-2024-3094 (XZ Utils Backdoor, CVSS 10)",
+        "CVE-2023-22515 (Confluence Broken Access Control, CVSS 9.1)"
+      ],
+      "remediation_available_pct": 45
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 8,
+      "mttr_hours": 17.71,
+      "availability_pct": 96.243,
+      "cpu_utilization_pct": 66.47
+    },
+    "dependencies": {
+      "depends_on": ["Secure-AuditTrailVault", "svc-notification-town", "GlobalPayrollEngine-798"],
+      "depended_on_by": ["LegacyClearingHouse-505", "MainframeSettlementWrapper-314"]
+    },
+    "expected_6r": "RETIRE",
+    "expected_risk_score_range": [85, 96]
+  },
+  {
+    "id": "app-655238a6",
+    "name": "CoreBillingLedger-159",
+    "archetype": "LEGACY_MONOLITH",
+    "language": "COBOL",
+    "runtime_version": "IBM Enterprise v4.2",
+    "criticality": "HIGH",
+    "owner_team": "Enterprise Risk Ops DevTeam",
+    "age_years": 22,
+    "monthly_cost_usd": 36800,
+    "last_major_update_years_ago": 11,
+    "business_description": "COBOL-based billing ledger for enterprise risk operations. Duplicate functionality exists in CoreBillingLedger-646. No engineer on the current team has COBOL expertise. Business confirmed it can be decommissioned once -646 is retired.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "RedHat Enterprise Linux 6",
+      "os_eol_date": "2020-11-30",
+      "location": "Hyderabad DC"
+    },
+    "security": {
+      "cve_count": 7,
+      "critical_cve_count": 4,
+      "sample_cves": [
+        "CVE-2021-44228 (Log4Shell RCE, CVSS 9.8)",
+        "CVE-2022-22965 (Spring4Shell RCE, CVSS 9.8)",
+        "CVE-2022-26134 (Confluence OGNL Injection, CVSS 9.8)",
+        "CVE-2024-3094 (XZ Utils Backdoor, CVSS 10)"
+      ],
+      "remediation_available_pct": 43
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 10,
+      "mttr_hours": 15.0,
+      "availability_pct": 96.318,
+      "cpu_utilization_pct": 75.68
+    },
+    "dependencies": {
+      "depends_on": ["CoreBillingLedger-564", "GlobalPayrollEngine-798"],
+      "depended_on_by": []
+    },
+    "expected_6r": "RETIRE",
+    "expected_risk_score_range": [82, 93]
+  },
+  {
+    "id": "app-17be3111",
+    "name": "MainframeSettlementWrapper-314",
+    "archetype": "LEGACY_MONOLITH",
+    "language": ".NET Framework 4.0",
+    "runtime_version": "4.0.30319",
+    "criticality": "HIGH",
+    "owner_team": "Enterprise Risk Ops DevTeam",
+    "age_years": 13,
+    "monthly_cost_usd": 22800,
+    "last_major_update_years_ago": 5,
+    "business_description": "Settlement orchestration wrapper around a mainframe core. Handles transaction finalization for enterprise risk operations. Business logic is complex, proprietary, and deeply understood by the team — strategic asset worth preserving through re-architecture, not replacement.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2012 R2",
+      "os_eol_date": "2023-10-10",
+      "location": "Hyderabad DC"
+    },
+    "security": {
+      "cve_count": 8,
+      "critical_cve_count": 5,
+      "sample_cves": [
+        "CVE-2019-19781 (Citrix Path Traversal, CVSS 9.8)",
+        "CVE-2020-1472 (Zerologon Privilege Escalation, CVSS 10)",
+        "CVE-2024-3094 (XZ Utils Backdoor, CVSS 10)",
+        "CVE-2022-30190 (Follina MSDT RCE, CVSS 7.8)"
+      ],
+      "remediation_available_pct": 37
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 5,
+      "mttr_hours": 18.78,
+      "availability_pct": 95.816,
+      "cpu_utilization_pct": 79.86
+    },
+    "dependencies": {
+      "depends_on": ["LegacyClearingHouse-664", "CoreBillingLedger-646", "LegacyClearingHouse-119"],
+      "depended_on_by": []
+    },
+    "expected_6r": "REFACTOR",
+    "expected_risk_score_range": [68, 82]
+  },
+  {
+    "id": "app-27209bdf",
+    "name": "GlobalPayrollEngine-798",
+    "archetype": "LEGACY_MONOLITH",
+    "language": "COBOL",
+    "runtime_version": "IBM Enterprise v4.2",
+    "criticality": "HIGH",
+    "owner_team": "Global Wealth Management DevTeam",
+    "age_years": 21,
+    "monthly_cost_usd": 34600,
+    "last_major_update_years_ago": 7,
+    "business_description": "Global payroll calculation engine. Core COBOL business logic is stable, well-tested, and handles regulatory edge cases accumulated over two decades. The logic itself is not the problem — the infrastructure layer is. Primary modernisation goal: move off unsupported OS onto managed cloud without touching the COBOL.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2012 R2",
+      "os_eol_date": "2023-10-10",
+      "location": "On-Prem East"
+    },
+    "security": {
+      "cve_count": 5,
+      "critical_cve_count": 3,
+      "sample_cves": [
+        "CVE-2023-22515 (Confluence Broken Access Control, CVSS 9.1)",
+        "CVE-2021-26855 (ProxyLogon SSRF, CVSS 9.1)",
+        "CVE-2024-3094 (XZ Utils Backdoor, CVSS 10)"
+      ],
+      "remediation_available_pct": 60
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 8,
+      "mttr_hours": 22.74,
+      "availability_pct": 97.586,
+      "cpu_utilization_pct": 77.27
+    },
+    "dependencies": {
+      "depends_on": ["LegacyClearingHouse-505", "PolicyBatchProcessor-259", "CoreBillingLedger-564"],
+      "depended_on_by": ["svc-auth-begin", "svc-payment-api-grow"]
+    },
+    "expected_6r": "REPLATFORM",
+    "expected_risk_score_range": [60, 76]
+  },
+  {
+    "id": "app-b02b61c4",
+    "name": "Informatica PowerCenter",
+    "archetype": "COTS_VENDOR",
+    "language": "Pre-compiled Binary",
+    "runtime_version": "v10.5",
+    "criticality": "MISSION_CRITICAL",
+    "owner_team": "Enterprise Vendor Applications Team",
+    "age_years": 9,
+    "monthly_cost_usd": 58000,
+    "last_major_update_years_ago": 2,
+    "business_description": "Enterprise ETL and data integration platform. PowerCenter v10.5 is still vendor-supported, but Informatica's strategic direction is IDMC (Intelligent Data Management Cloud). Vendor migration path is well-documented. Minor configuration changes required — no custom code rewrite.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2019",
+      "os_eol_date": "2029-01-09",
+      "location": "AWS ap-south-1 (EC2)"
+    },
+    "security": {
+      "cve_count": 2,
+      "critical_cve_count": 1,
+      "sample_cves": [
+        "CVE-2019-19781 (Citrix Path Traversal, CVSS 9.8)",
+        "CVE-2023-38831 (WinRAR RCE, CVSS 7.8)"
+      ],
+      "remediation_available_pct": 50
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 2,
+      "mttr_hours": 6.58,
+      "availability_pct": 99.261,
+      "cpu_utilization_pct": 43.6
+    },
+    "dependencies": {
+      "depends_on": ["SAP ERP Central Component", "LegacyClearingHouse-119", "svc-notification-certainly"],
+      "depended_on_by": ["Carbon Black App Control"]
+    },
+    "expected_6r": "REPLATFORM",
+    "expected_risk_score_range": [42, 58]
+  },
+  {
+    "id": "app-0f1259e0",
+    "name": "SAP ERP Central Component",
+    "archetype": "COTS_VENDOR",
+    "language": "Pre-compiled Binary",
+    "runtime_version": "ECC 6.0 EHP8",
+    "criticality": "MISSION_CRITICAL",
+    "owner_team": "Enterprise Vendor Applications Team",
+    "age_years": 14,
+    "monthly_cost_usd": 87500,
+    "last_major_update_years_ago": 3,
+    "business_description": "Enterprise ERP managing finance, procurement, and supply chain across 12 business units. SAP ECC 6.0 mainstream maintenance ends 2027. SAP S/4HANA is the vendor-mandated successor with a structured migration programme. Cannot be refactored — it is a pre-compiled vendor binary.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2019",
+      "os_eol_date": "2029-01-09",
+      "location": "Hyderabad DC"
+    },
+    "security": {
+      "cve_count": 4,
+      "critical_cve_count": 3,
+      "sample_cves": [
+        "CVE-2022-26134 (Confluence OGNL Injection, CVSS 9.8)",
+        "CVE-2023-22515 (Confluence Broken Access Control, CVSS 9.1)",
+        "CVE-2020-1472 (Zerologon Privilege Escalation, CVSS 10)"
+      ],
+      "remediation_available_pct": 50
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 1,
+      "mttr_hours": 3.06,
+      "availability_pct": 99.696,
+      "cpu_utilization_pct": 54.82
+    },
+    "dependencies": {
+      "depends_on": ["SAP ERP (instance 2)", "Secure-KyvValidationLedger"],
+      "depended_on_by": ["Informatica PowerCenter", "svc-payment-api-grow", "GlobalPayrollEngine-798"]
+    },
+    "expected_6r": "REPLACE",
+    "expected_risk_score_range": [55, 70]
+  },
+  {
+    "id": "app-ea1fca65",
+    "name": "Tivoli Identity Manager",
+    "archetype": "COTS_VENDOR",
+    "language": "Pre-compiled Binary",
+    "runtime_version": "v7.0.1",
+    "criticality": "HIGH",
+    "owner_team": "Enterprise Vendor Applications Team",
+    "age_years": 11,
+    "monthly_cost_usd": 19400,
+    "last_major_update_years_ago": 4,
+    "business_description": "IBM Tivoli Identity Manager v7.0.1 handling enterprise identity lifecycle. IBM's strategic successor is IBM Security Verify. TIM v7.0.1 is end-of-support and IBM has ceased issuing security patches. A modern SaaS IAM replacement eliminates on-prem overhead entirely.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2019",
+      "os_eol_date": "2029-01-09",
+      "location": "Hyderabad DC"
+    },
+    "security": {
+      "cve_count": 5,
+      "critical_cve_count": 3,
+      "sample_cves": [
+        "CVE-2023-22515 (Confluence Broken Access Control, CVSS 9.1)",
+        "CVE-2021-44228 (Log4Shell RCE, CVSS 9.8)",
+        "CVE-2022-26134 (Confluence OGNL Injection, CVSS 9.8)"
+      ],
+      "remediation_available_pct": 60
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 2,
+      "mttr_hours": 5.0,
+      "availability_pct": 99.75,
+      "cpu_utilization_pct": 64.19
+    },
+    "dependencies": {
+      "depends_on": ["Secure-AuditTrailVault", "Carbon Black App Control", "Oracle Access Manager"],
+      "depended_on_by": ["svc-notification-better", "Oracle Access Manager"]
+    },
+    "expected_6r": "REPLACE",
+    "expected_risk_score_range": [52, 67]
+  },
+  {
+    "id": "app-acdabacc",
+    "name": "Carbon Black App Control",
+    "archetype": "COTS_VENDOR",
+    "language": "Pre-compiled Binary",
+    "runtime_version": "v8.9.2",
+    "criticality": "HIGH",
+    "owner_team": "Enterprise Vendor Applications Team",
+    "age_years": 5,
+    "monthly_cost_usd": 14200,
+    "last_major_update_years_ago": 1,
+    "business_description": "Application whitelisting and endpoint security control plane. VMware Carbon Black v8.9.2 on supported Windows Server 2019. Vendor-supported, no custom code, stable operations. No architectural changes needed — cloud-hosted deployment is available and migration is well-documented.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Windows Server 2019",
+      "os_eol_date": "2029-01-09",
+      "location": "Hyderabad DC"
+    },
+    "security": {
+      "cve_count": 5,
+      "critical_cve_count": 3,
+      "sample_cves": [
+        "CVE-2021-44228 (Log4Shell RCE, CVSS 9.8)",
+        "CVE-2017-5638 (Apache Struts2 RCE, CVSS 10)",
+        "CVE-2022-22965 (Spring4Shell RCE, CVSS 9.8)"
+      ],
+      "remediation_available_pct": 40
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 4,
+      "mttr_hours": 2.62,
+      "availability_pct": 99.809,
+      "cpu_utilization_pct": 50.3
+    },
+    "dependencies": {
+      "depends_on": ["Tivoli Identity Manager", "Informatica PowerCenter"],
+      "depended_on_by": ["PolicyBatchProcessor-259"]
+    },
+    "expected_6r": "REHOST",
+    "expected_risk_score_range": [30, 48]
+  },
+  {
+    "id": "app-4bf50b52",
+    "name": "Secure-AuditTrailVault",
+    "archetype": "COMPLIANCE_CRITICAL",
+    "language": "Java 17",
+    "runtime_version": "OpenJDK 17.0.9 (Hardened)",
+    "criticality": "MISSION_CRITICAL",
+    "owner_team": "SecOps Risk Compliance Engineering",
+    "age_years": 3,
+    "monthly_cost_usd": 9100,
+    "last_major_update_years_ago": 0,
+    "business_description": "Immutable audit trail vault for regulatory evidence and compliance. Modernised to Java 17 on hardened RHEL 8 eighteen months ago. Passes all internal security reviews. Regulatory framework requires 18-month re-certification before any infrastructure migration — moving it now costs more than it saves.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Hardened RedHat Enterprise Linux 8",
+      "os_eol_date": "2029-05-31",
+      "location": "Isolated Secure Vault Zone"
+    },
+    "security": {
+      "cve_count": 1,
+      "critical_cve_count": 0,
+      "sample_cves": [
+        "CVE-2023-38831 (WinRAR RCE, CVSS 7.8 — patched)"
+      ],
+      "remediation_available_pct": 100
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 0,
+      "mttr_hours": 1.17,
+      "availability_pct": 99.982,
+      "cpu_utilization_pct": 49.56
+    },
+    "dependencies": {
+      "depends_on": ["Secure-KyvValidationLedger"],
+      "depended_on_by": ["CoreBillingLedger-646", "Secure-KyvValidationLedger", "Oracle Access Manager"]
+    },
+    "expected_6r": "RETAIN",
+    "expected_risk_score_range": [5, 20]
+  },
+  {
+    "id": "app-b45ed1f0",
+    "name": "Secure-KyvValidationLedger",
+    "archetype": "COMPLIANCE_CRITICAL",
+    "language": "C# / .NET 8",
+    "runtime_version": "v8.0.100",
+    "criticality": "MISSION_CRITICAL",
+    "owner_team": "SecOps Risk Compliance Engineering",
+    "age_years": 2,
+    "monthly_cost_usd": 7800,
+    "last_major_update_years_ago": 0,
+    "business_description": "KYC validation ledger running compliance checks for onboarding workflows. Built on .NET 8 with hardened RHEL 8 infrastructure. Zero incidents in the last quarter. Active development team. Compliance team has explicitly flagged it as out-of-scope for modernisation until 2027 review cycle.",
+    "infrastructure": {
+      "type": "ON_PREM_VM",
+      "os": "Hardened RedHat Enterprise Linux 8",
+      "os_eol_date": "2029-05-31",
+      "location": "Isolated Secure Vault Zone"
+    },
+    "security": {
+      "cve_count": 1,
+      "critical_cve_count": 0,
+      "sample_cves": [
+        "CVE-2017-5638 (Apache Struts2 RCE, CVSS 10 — mitigated, isolated from public internet)"
+      ],
+      "remediation_available_pct": 0
+    },
+    "operational_metrics": {
+      "incidents_last_quarter": 0,
+      "mttr_hours": 1.02,
+      "availability_pct": 99.954,
+      "cpu_utilization_pct": 50.35
+    },
+    "dependencies": {
+      "depends_on": ["LegacyClearingHouse-664", "Secure-AuditTrailVault"],
+      "depended_on_by": ["SAP ERP Central Component", "svc-payment-api-science", "Secure-AuditTrailVault"]
+    },
+    "expected_6r": "RETAIN",
+    "expected_risk_score_range": [5, 18]
+  }
+]
