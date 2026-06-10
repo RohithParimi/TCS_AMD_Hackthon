@@ -5,12 +5,12 @@
     "archetype": "LEGACY_MONOLITH",
     "language": "Java 7",
     "runtime_version": "1.7.0_80",
-    "criticality": "MISSION_CRITICAL",
+    "criticality": "MEDIUM",
     "owner_team": "HR Services Tech DevTeam",
     "age_years": 18,
     "monthly_cost_usd": 41200,
     "last_major_update_years_ago": 9,
-    "business_description": "Core billing ledger processing HR payroll transactions. High-volume batch processing tightly coupled to downstream settlement systems. No active development roadmap.",
+    "business_description": "Legacy billing ledger for HR payroll. Its functionality was fully migrated to a modern cloud billing platform 18 months ago; this instance now runs in parallel for historical reference only. No active development roadmap. The business has approved decommissioning once remaining historical reports are archived.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "RedHat Enterprise Linux 6",
@@ -35,11 +35,16 @@
       "cpu_utilization_pct": 66.47
     },
     "dependencies": {
-      "depends_on": ["Secure-AuditTrailVault", "svc-notification-town", "GlobalPayrollEngine-798"],
-      "depended_on_by": ["LegacyClearingHouse-505", "MainframeSettlementWrapper-314"]
+      "depends_on": [
+        "Secure-AuditTrailVault"
+      ],
+      "depended_on_by": []
     },
     "expected_6r": "RETIRE",
-    "expected_risk_score_range": [85, 96]
+    "expected_risk_score_range": [
+      80,
+      93
+    ]
   },
   {
     "id": "app-655238a6",
@@ -47,12 +52,12 @@
     "archetype": "LEGACY_MONOLITH",
     "language": "COBOL",
     "runtime_version": "IBM Enterprise v4.2",
-    "criticality": "HIGH",
+    "criticality": "MEDIUM",
     "owner_team": "Enterprise Risk Ops DevTeam",
     "age_years": 22,
     "monthly_cost_usd": 36800,
     "last_major_update_years_ago": 11,
-    "business_description": "COBOL-based billing ledger for enterprise risk operations. Duplicate functionality exists in CoreBillingLedger-646. No engineer on the current team has COBOL expertise. Business confirmed it can be decommissioned once -646 is retired.",
+    "business_description": "COBOL billing ledger whose function fully duplicates CoreBillingLedger-646. No engineer on the current team has COBOL expertise. Confirmed redundant; business has approved decommissioning. No active development roadmap.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "RedHat Enterprise Linux 6",
@@ -77,11 +82,17 @@
       "cpu_utilization_pct": 75.68
     },
     "dependencies": {
-      "depends_on": ["CoreBillingLedger-564", "GlobalPayrollEngine-798"],
+      "depends_on": [
+        "CoreBillingLedger-564",
+        "GlobalPayrollEngine-798"
+      ],
       "depended_on_by": []
     },
     "expected_6r": "RETIRE",
-    "expected_risk_score_range": [82, 93]
+    "expected_risk_score_range": [
+      82,
+      93
+    ]
   },
   {
     "id": "app-17be3111",
@@ -94,7 +105,7 @@
     "age_years": 13,
     "monthly_cost_usd": 22800,
     "last_major_update_years_ago": 5,
-    "business_description": "Settlement orchestration wrapper around a mainframe core. Handles transaction finalization for enterprise risk operations. Business logic is complex, proprietary, and deeply understood by the team — strategic asset worth preserving through re-architecture, not replacement.",
+    "business_description": "Settlement orchestration wrapper around a mainframe core. Handles transaction finalization for enterprise risk operations. Business logic is complex, proprietary, and deeply understood by the team \u2014 strategic asset worth preserving through re-architecture, not replacement.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Windows Server 2012 R2",
@@ -119,11 +130,18 @@
       "cpu_utilization_pct": 79.86
     },
     "dependencies": {
-      "depends_on": ["LegacyClearingHouse-664", "CoreBillingLedger-646", "LegacyClearingHouse-119"],
+      "depends_on": [
+        "LegacyClearingHouse-664",
+        "CoreBillingLedger-646",
+        "LegacyClearingHouse-119"
+      ],
       "depended_on_by": []
     },
     "expected_6r": "REFACTOR",
-    "expected_risk_score_range": [68, 82]
+    "expected_risk_score_range": [
+      68,
+      82
+    ]
   },
   {
     "id": "app-27209bdf",
@@ -136,7 +154,7 @@
     "age_years": 21,
     "monthly_cost_usd": 34600,
     "last_major_update_years_ago": 7,
-    "business_description": "Global payroll calculation engine. Core COBOL business logic is stable, well-tested, and handles regulatory edge cases accumulated over two decades. The logic itself is not the problem — the infrastructure layer is. Primary modernisation goal: move off unsupported OS onto managed cloud without touching the COBOL.",
+    "business_description": "Global payroll calculation engine. Core COBOL business logic is stable, well-tested, and handles regulatory edge cases accumulated over two decades. The logic itself is not the problem \u2014 the infrastructure layer is. Primary modernisation goal: move off unsupported OS onto managed cloud without touching the COBOL.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Windows Server 2012 R2",
@@ -160,11 +178,21 @@
       "cpu_utilization_pct": 77.27
     },
     "dependencies": {
-      "depends_on": ["LegacyClearingHouse-505", "PolicyBatchProcessor-259", "CoreBillingLedger-564"],
-      "depended_on_by": ["svc-auth-begin", "svc-payment-api-grow"]
+      "depends_on": [
+        "LegacyClearingHouse-505",
+        "PolicyBatchProcessor-259",
+        "CoreBillingLedger-564"
+      ],
+      "depended_on_by": [
+        "svc-auth-begin",
+        "svc-payment-api-grow"
+      ]
     },
     "expected_6r": "REPLATFORM",
-    "expected_risk_score_range": [60, 76]
+    "expected_risk_score_range": [
+      60,
+      76
+    ]
   },
   {
     "id": "app-b02b61c4",
@@ -177,7 +205,7 @@
     "age_years": 9,
     "monthly_cost_usd": 58000,
     "last_major_update_years_ago": 2,
-    "business_description": "Enterprise ETL and data integration platform. PowerCenter v10.5 is still vendor-supported, but Informatica's strategic direction is IDMC (Intelligent Data Management Cloud). Vendor migration path is well-documented. Minor configuration changes required — no custom code rewrite.",
+    "business_description": "Enterprise ETL and data integration platform. PowerCenter v10.5 is still vendor-supported, but Informatica's strategic direction is IDMC (Intelligent Data Management Cloud). Vendor migration path is well-documented. Minor configuration changes required \u2014 no custom code rewrite.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Windows Server 2019",
@@ -200,11 +228,20 @@
       "cpu_utilization_pct": 43.6
     },
     "dependencies": {
-      "depends_on": ["SAP ERP Central Component", "LegacyClearingHouse-119", "svc-notification-certainly"],
-      "depended_on_by": ["Carbon Black App Control"]
+      "depends_on": [
+        "SAP ERP Central Component",
+        "LegacyClearingHouse-119",
+        "svc-notification-certainly"
+      ],
+      "depended_on_by": [
+        "Carbon Black App Control"
+      ]
     },
     "expected_6r": "REPLATFORM",
-    "expected_risk_score_range": [42, 58]
+    "expected_risk_score_range": [
+      42,
+      58
+    ]
   },
   {
     "id": "app-0f1259e0",
@@ -217,7 +254,7 @@
     "age_years": 14,
     "monthly_cost_usd": 87500,
     "last_major_update_years_ago": 3,
-    "business_description": "Enterprise ERP managing finance, procurement, and supply chain across 12 business units. SAP ECC 6.0 mainstream maintenance ends 2027. SAP S/4HANA is the vendor-mandated successor with a structured migration programme. Cannot be refactored — it is a pre-compiled vendor binary.",
+    "business_description": "Enterprise ERP managing finance, procurement, and supply chain across 12 business units. SAP ECC 6.0 mainstream maintenance ends 2027. SAP S/4HANA is the vendor-mandated successor with a structured migration programme. Cannot be refactored \u2014 it is a pre-compiled vendor binary.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Windows Server 2019",
@@ -241,11 +278,21 @@
       "cpu_utilization_pct": 54.82
     },
     "dependencies": {
-      "depends_on": ["SAP ERP (instance 2)", "Secure-KyvValidationLedger"],
-      "depended_on_by": ["Informatica PowerCenter", "svc-payment-api-grow", "GlobalPayrollEngine-798"]
+      "depends_on": [
+        "SAP ERP (instance 2)",
+        "Secure-KyvValidationLedger"
+      ],
+      "depended_on_by": [
+        "Informatica PowerCenter",
+        "svc-payment-api-grow",
+        "GlobalPayrollEngine-798"
+      ]
     },
     "expected_6r": "REPLACE",
-    "expected_risk_score_range": [55, 70]
+    "expected_risk_score_range": [
+      55,
+      70
+    ]
   },
   {
     "id": "app-ea1fca65",
@@ -282,11 +329,21 @@
       "cpu_utilization_pct": 64.19
     },
     "dependencies": {
-      "depends_on": ["Secure-AuditTrailVault", "Carbon Black App Control", "Oracle Access Manager"],
-      "depended_on_by": ["svc-notification-better", "Oracle Access Manager"]
+      "depends_on": [
+        "Secure-AuditTrailVault",
+        "Carbon Black App Control",
+        "Oracle Access Manager"
+      ],
+      "depended_on_by": [
+        "svc-notification-better",
+        "Oracle Access Manager"
+      ]
     },
     "expected_6r": "REPLACE",
-    "expected_risk_score_range": [52, 67]
+    "expected_risk_score_range": [
+      52,
+      67
+    ]
   },
   {
     "id": "app-acdabacc",
@@ -299,7 +356,7 @@
     "age_years": 5,
     "monthly_cost_usd": 14200,
     "last_major_update_years_ago": 1,
-    "business_description": "Application whitelisting and endpoint security control plane. VMware Carbon Black v8.9.2 on supported Windows Server 2019. Vendor-supported, no custom code, stable operations. No architectural changes needed — cloud-hosted deployment is available and migration is well-documented.",
+    "business_description": "Application whitelisting and endpoint security control plane. VMware Carbon Black v8.9.2 on supported Windows Server 2019. Vendor-supported, no custom code, stable operations. No architectural changes needed \u2014 cloud-hosted deployment is available and migration is well-documented.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Windows Server 2019",
@@ -323,11 +380,19 @@
       "cpu_utilization_pct": 50.3
     },
     "dependencies": {
-      "depends_on": ["Tivoli Identity Manager", "Informatica PowerCenter"],
-      "depended_on_by": ["PolicyBatchProcessor-259"]
+      "depends_on": [
+        "Tivoli Identity Manager",
+        "Informatica PowerCenter"
+      ],
+      "depended_on_by": [
+        "PolicyBatchProcessor-259"
+      ]
     },
     "expected_6r": "REHOST",
-    "expected_risk_score_range": [30, 48]
+    "expected_risk_score_range": [
+      30,
+      48
+    ]
   },
   {
     "id": "app-4bf50b52",
@@ -340,7 +405,7 @@
     "age_years": 3,
     "monthly_cost_usd": 9100,
     "last_major_update_years_ago": 0,
-    "business_description": "Immutable audit trail vault for regulatory evidence and compliance. Modernised to Java 17 on hardened RHEL 8 eighteen months ago. Passes all internal security reviews. Regulatory framework requires 18-month re-certification before any infrastructure migration — moving it now costs more than it saves.",
+    "business_description": "Immutable audit trail vault for regulatory evidence and compliance. Modernised to Java 17 on hardened RHEL 8 eighteen months ago. Passes all internal security reviews. Regulatory framework requires 18-month re-certification before any infrastructure migration \u2014 moving it now costs more than it saves.",
     "infrastructure": {
       "type": "ON_PREM_VM",
       "os": "Hardened RedHat Enterprise Linux 8",
@@ -351,7 +416,7 @@
       "cve_count": 1,
       "critical_cve_count": 0,
       "sample_cves": [
-        "CVE-2023-38831 (WinRAR RCE, CVSS 7.8 — patched)"
+        "CVE-2023-38831 (WinRAR RCE, CVSS 7.8 \u2014 patched)"
       ],
       "remediation_available_pct": 100
     },
@@ -362,11 +427,20 @@
       "cpu_utilization_pct": 49.56
     },
     "dependencies": {
-      "depends_on": ["Secure-KyvValidationLedger"],
-      "depended_on_by": ["CoreBillingLedger-646", "Secure-KyvValidationLedger", "Oracle Access Manager"]
+      "depends_on": [
+        "Secure-KyvValidationLedger"
+      ],
+      "depended_on_by": [
+        "CoreBillingLedger-646",
+        "Secure-KyvValidationLedger",
+        "Oracle Access Manager"
+      ]
     },
     "expected_6r": "RETAIN",
-    "expected_risk_score_range": [5, 20]
+    "expected_risk_score_range": [
+      5,
+      20
+    ]
   },
   {
     "id": "app-b45ed1f0",
@@ -390,7 +464,7 @@
       "cve_count": 1,
       "critical_cve_count": 0,
       "sample_cves": [
-        "CVE-2017-5638 (Apache Struts2 RCE, CVSS 10 — mitigated, isolated from public internet)"
+        "CVE-2017-5638 (Apache Struts2 RCE, CVSS 10 \u2014 mitigated, isolated from public internet)"
       ],
       "remediation_available_pct": 0
     },
@@ -401,10 +475,20 @@
       "cpu_utilization_pct": 50.35
     },
     "dependencies": {
-      "depends_on": ["LegacyClearingHouse-664", "Secure-AuditTrailVault"],
-      "depended_on_by": ["SAP ERP Central Component", "svc-payment-api-science", "Secure-AuditTrailVault"]
+      "depends_on": [
+        "LegacyClearingHouse-664",
+        "Secure-AuditTrailVault"
+      ],
+      "depended_on_by": [
+        "SAP ERP Central Component",
+        "svc-payment-api-science",
+        "Secure-AuditTrailVault"
+      ]
     },
     "expected_6r": "RETAIN",
-    "expected_risk_score_range": [5, 18]
+    "expected_risk_score_range": [
+      5,
+      18
+    ]
   }
 ]

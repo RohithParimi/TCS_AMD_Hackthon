@@ -24,11 +24,18 @@ else:
     LLM_MODEL = "qwen2.5:7b"
     LLM_API_KEY = "ollama"  # Ollama ignores the value but the client needs a non-empty string
 
+# Make credentials visible to libraries that read them from the environment.
+# CrewAI's internal clients (and litellm) fall back to these env vars, so setting
+# them here guarantees every code path sees the right endpoint + key.
+os.environ["OPENAI_API_KEY"] = LLM_API_KEY
+os.environ["OPENAI_BASE_URL"] = LLM_BASE_URL
+os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")  # skip the trace prompt
+
 # Embeddings run locally via sentence-transformers (no GPU required, no external API)
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # Paths
-DATA_PATH = "data/synthetic_apps.json"
+DATA_PATH = "backend/data/synthetic_apps.json"
 KNOWLEDGE_BASE_DIR = "knowledge_base"
 CHROMA_DIR = "chroma_db"
 CHROMA_COLLECTION = "modernization_patterns"
