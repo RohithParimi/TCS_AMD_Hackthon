@@ -35,7 +35,7 @@ os.environ.setdefault("CREWAI_TRACING_ENABLED", "false")  # skip the trace promp
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # Paths
-DATA_PATH = "backend/data/synthetic_apps.json"
+DATA_PATH = "data/synthetic_apps.json"
 KNOWLEDGE_BASE_DIR = "knowledge_base"
 CHROMA_DIR = "chroma_db"
 CHROMA_COLLECTION = "modernization_patterns"
