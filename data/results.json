@@ -1,13 +1,13 @@
 {
   "meta": {
     "model": "Qwen/Qwen2.5-7B-Instruct",
-    "generated_at": "2026-06-10T08:46:20.378374+00:00",
+    "generated_at": "2026-06-11T17:14:19.608842+00:00",
     "total_apps": 10,
-    "succeeded": 7,
-    "failed": 3,
-    "decisions_matching_expected": 6,
-    "accuracy_pct": 85.7,
-    "avg_latency_seconds": 18.1
+    "succeeded": 9,
+    "failed": 1,
+    "decisions_matching_expected": 7,
+    "accuracy_pct": 77.8,
+    "avg_latency_seconds": 18.6
   },
   "results": [
     {
@@ -16,7 +16,7 @@
       "expected_6r": "RETIRE",
       "risk_score": 85,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
         "High Incidents"
       ],
@@ -30,39 +30,38 @@
       "decision": "Retire",
       "decision_valid": true,
       "confidence": "High",
-      "decision_reasoning": "The application scores 85, indicating high urgency for modernization. Given the end-of-life OS (RedHat Enterprise Linux 6), critical CVEs (11 with 8 being critical), and high incidents (8 last quarter with a 17.7-hour MTTR), the key risk factors align strongly with the 'Retire' pattern. The application is redundant, as its functionality has been fully migrated to a modern cloud billing platform, and the business has approved decommissioning once historical reports are archived. This matches the 'retire' anti-pattern warning against rehosting what should be retired, reinforcing the decision to Retire.",
+      "decision_reasoning": "The application scores 85, indicating high urgency for modernization. Given the EOL OS, critical CVEs, and high incidents, it aligns with the '80\u2013100' score band, which typically results in a Retire decision. Additionally, the application is redundant, as its functionality has been fully migrated to a modern cloud billing platform, and the business has approved decommissioning once historical reports are archived. This matches the 'Retire' pattern criteria of being redundant, having an end-of-life OS, critical CVEs, and poor operational health.",
       "headline": "Retire the application due to high risk from end-of-life OS, critical vulnerabilities, and frequent operational issues.",
-      "explanation": "Given the application's current score of 85, which indicates a high urgency for modernization, we must address several critical issues. The operating system (RedHat Enterprise Linux 6) is now end-of-life, leaving us without security updates and support. Additionally, there are 11 known critical vulnerabilities, with 8 being particularly severe. Over the last quarter, we experienced 8 operational incidents, resulting in a Mean Time To Repair (MTTR) of 17.7 hours. These factors collectively pose significant risks to our operations. Fortunately, the application's functionality has already been fully migrated to a modern cloud billing platform, and the business has approved its decommissioning after archiving all necessary historical reports. This aligns with the 'retire' anti-pattern, which warns against rehosting redundant systems, further supporting our decision to retire the application.",
-      "caveats": "Before proceeding, ensure that all historical reports are properly archived and that any remaining dependencies or integrations are resolved. Also, confirm that the cloud billing platform is fully capable of handling the transition without disruptions.",
-      "latency_seconds": 7.0,
+      "explanation": "Given the application's current risk score of 85, which indicates a high urgency for modernization, we have decided to retire it. The application uses an end-of-life operating system, has critical vulnerabilities that pose significant security risks, and experiences frequent operational issues leading to high incidents. These factors align with the '80\u2013100' score band, which typically results in a 'Retire' decision. Furthermore, the application's functionality has been fully migrated to a modern cloud billing platform, and the business has approved its decommissioning once all historical reports are archived. This decision ensures we maintain a secure and reliable environment while freeing up resources for more strategic initiatives.",
+      "caveats": "Before proceeding with retirement, ensure all historical reports are archived and verify that the migration to the new platform is complete and functioning as expected. Address any remaining critical vulnerabilities before decommissioning the application to prevent potential security breaches.",
+      "latency_seconds": 7.7,
       "matches_expected": true
     },
     {
-      "app_id": "app-655238a6",
-      "app_name": "CoreBillingLedger-159",
-      "expected_6r": "RETIRE",
-      "risk_score": 92,
+      "app_id": "app-17be3111",
+      "app_name": "MainframeSettlementWrapper-314",
+      "expected_6r": "REFACTOR",
+      "risk_score": 80,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
         "High Incidents",
-        "Outdated Runtime",
-        "No COBOL Expertise"
+        "Outdated Runtime"
       ],
-      "assessment_summary": "Urgent risk due to end-of-life OS, critical vulnerabilities, high operational issues, outdated runtime, and lack of COBOL expertise.",
+      "assessment_summary": "High risk due to end-of-life OS, critical vulnerabilities, high operational issues, and outdated runtime. Urgent need for modernization.",
       "retrieved_patterns": [
         "13_rationale_risk_scoring.md",
+        "03_pattern_refactor.md",
         "05_pattern_retire.md",
-        "04_pattern_replace.md",
-        "03_pattern_refactor.md"
+        "02_pattern_replatform.md"
       ],
-      "decision": "Retire",
+      "decision": "Refactor",
       "decision_valid": true,
       "confidence": "High",
-      "decision_reasoning": "The application scores 92, indicating extreme urgency for modernization. Given the end-of-life OS (RedHat Enterprise Linux 6), critical CVEs (7 with 4 being critical), high incidents (10 last quarter with a 15-hour MTTR), and outdated runtime (COBOL IBM Enterprise v4.2), the key risk factors align strongly with the 'Retire' pattern. Additionally, the application is redundant, as its functionality fully duplicates CoreBillingLedger-646, and the business has confirmed decommissioning. This matches the 'retire' pattern's criteria for applications that are barely used, redundant, or duplicated, and run on end-of-life OS with many unpatched critical CVEs.",
-      "headline": "Retire the application due to extreme risk from end-of-life OS, critical vulnerabilities, high operational issues, and outdated runtime.",
-      "explanation": "The application scores 92, indicating an urgent need for modernization. Key risk factors include an end-of-life OS (RedHat Enterprise Linux 6), 7 critical vulnerabilities with 4 being particularly severe, 10 operational incidents last quarter with a Mean Time To Repair (MTTR) of 15 hours, and an outdated runtime (COBOL IBM Enterprise v4.2). The application is redundant, as its functionality fully duplicates CoreBillingLedger-646. Furthermore, the business has confirmed that decommissioning is acceptable once all necessary historical reports are archived. This aligns with the 'retire' pattern's criteria for applications that are barely used, redundant, or duplicated, and run on end-of-life OS with many unpatched critical CVEs.",
-      "caveats": "Before proceeding, ensure all historical reports are properly archived and any remaining dependencies or integrations are resolved. Confirm that CoreBillingLedger-646 can fully handle the transition without disruptions.",
+      "decision_reasoning": "The application MainframeSettlementWrapper-314 has a high risk score of 80, indicating urgent need for modernization. Key risk factors include an end-of-life operating system (Windows Server 2012 R2), critical vulnerabilities (8 CVEs, 5 of which are critical), high operational issues (5 incidents last quarter, MTTR 18.78h, availability 95.816%), and an outdated runtime (.NET Framework 4.0). The business logic is complex, proprietary, and deeply understood by the team, making it a strategic asset worth preserving through re-architecture. This aligns with the 'Refactor' pattern, which is suitable when the application is strategic, the business logic is valuable, and the current implementation is holding the business back. The high cost and long timeline associated with Refactor are justified by the strategic importance of the application.",
+      "headline": "Refactor MainframeSettlementWrapper-314 due to high risk from end-of-life OS, critical vulnerabilities, high operational issues, and outdated runtime.",
+      "explanation": "MainframeSettlementWrapper-314 has a high risk score of 80, indicating an urgent need for modernization. Key risk factors include using an end-of-life operating system (Windows Server 2012 R2), which poses significant security risks. The application also has 8 critical vulnerabilities, with 5 classified as critical, further increasing the risk. Operationally, the application experiences high issues, with 5 incidents last quarter, a Mean Time To Repair (MTTR) of 18.78 hours, and an availability rate of 95.816%. Additionally, the application relies on an outdated runtime (.NET Framework 4.0), which limits its performance and compatibility. Despite these challenges, the business logic is complex, proprietary, and deeply understood by the team, making it a strategic asset worth preserving through re-architecture. This aligns with the 'Refactor' pattern, which is suitable when the application is strategic, the business logic is valuable, and the current implementation is holding the business back. The high cost and long timeline associated with Refactor are justified by the strategic importance of the application.",
+      "caveats": "Ensure the refactoring plan includes a detailed migration strategy to address the end-of-life OS, critical vulnerabilities, and outdated runtime. Prioritize addressing critical vulnerabilities to prevent potential security breaches. Consider the long timeline and budget implications, and plan for phased implementation if necessary.",
       "latency_seconds": 20.0,
       "matches_expected": true
     },
@@ -70,28 +69,54 @@
       "app_id": "app-27209bdf",
       "app_name": "GlobalPayrollEngine-798",
       "expected_6r": "REPLATFORM",
-      "risk_score": 88,
+      "risk_score": 85,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
         "High Incidents",
-        "Outdated Runtime",
-        "Dependency on Legacy Systems"
+        "Outdated Runtime"
       ],
-      "assessment_summary": "High risk due to end-of-life OS, critical vulnerabilities, high operational issues, outdated runtime, and dependencies on legacy systems. Urgent need for modernization.",
+      "assessment_summary": "High risk due to end-of-life OS, critical vulnerabilities, high operational issues, and outdated runtime. Urgent need for modernization.",
       "retrieved_patterns": [
         "13_rationale_risk_scoring.md",
         "02_pattern_replatform.md",
         "03_pattern_refactor.md",
         "05_pattern_retire.md"
       ],
+      "decision": "Refactor",
+      "decision_valid": true,
+      "confidence": "Medium",
+      "decision_reasoning": "The application MainframeSettlementWrapper-314 has a high risk score due to its end-of-life operating system, critical vulnerabilities, and high operational issues. However, the business logic is complex, proprietary, and strategically important, making it a candidate for refactoring rather than replacement. Refactoring allows us to modernize the application while preserving the critical business logic and reducing operational risks.",
+      "headline": "Refactor MainframeSettlementWrapper-314 due to high risk from end-of-life OS, critical vulnerabilities, and high operational issues.",
+      "explanation": "MainframeSettlementWrapper-314 has a high risk score of 85, indicating an urgent need for modernization. The application faces significant risks due to its end-of-life operating system, critical vulnerabilities, and high operational issues. However, the business logic is complex, proprietary, and strategically important, making it a candidate for refactoring rather than replacement. Refactoring allows us to modernize the application while preserving the critical business logic and reducing operational risks.",
+      "caveats": "Plan the refactoring process to modernize the infrastructure and address security vulnerabilities. Ensure the business logic is thoroughly documented and preserved during the refactoring process. Confirm alignment with the business on the strategic value of preserving the application\u2019s core functionality.",
+      "latency_seconds": 20.0,
+      "matches_expected": false
+    },
+    {
+      "app_id": "app-b02b61c4",
+      "app_name": "Informatica PowerCenter",
+      "expected_6r": "REPLATFORM",
+      "risk_score": 65,
+      "key_risk_factors": [
+        "EOL OS",
+        "Minor Security Issues",
+        "Vendor Migration Path"
+      ],
+      "assessment_summary": "Moderate risk due to end-of-life OS, minor security vulnerabilities, and the availability of a vendor migration path.",
+      "retrieved_patterns": [
+        "12_gotcha_vendor_lockin.md",
+        "01_pattern_rehost.md",
+        "02_pattern_replatform.md",
+        "04_pattern_replace.md"
+      ],
       "decision": "Replatform",
       "decision_valid": true,
       "confidence": "High",
-      "decision_reasoning": "The application GlobalPayrollEngine-798 scores 88, indicating a high risk due to an end-of-life OS (Windows Server 2012 R2), critical vulnerabilities (5 CVEs, 3 critical), high operational issues (8 incidents last quarter with an MTTR of 22.74 hours), and outdated runtime. The core business logic is stable and valuable, and the primary modernisation goal is to move off the unsupported OS onto a managed cloud without touching the COBOL. This matches the 'Replatform' pattern, which involves moving the application to the cloud with minor, targeted changes that take advantage of cloud capabilities, but without rewriting the core application. The application's stable and valuable logic, combined with the need to address the outdated infrastructure, makes Replatform the best fit.",
-      "headline": "Replatform GlobalPayrollEngine-798 to address high risk from end-of-life OS, critical vulnerabilities, high operational issues, and outdated runtime.",
-      "explanation": "The application GlobalPayrollEngine-798 scores 88, indicating a high risk due to an end-of-life OS (Windows Server 2012 R2), critical vulnerabilities (5 CVEs, 3 of which are critical), high operational issues (8 incidents last quarter with an MTTR of 22.74 hours), and outdated runtime. The core business logic is stable and valuable, and the primary modernization goal is to move off the unsupported OS onto a managed cloud without touching the COBOL. This matches the 'Replatform' pattern, which involves moving the application to the cloud with minor, targeted changes that take advantage of cloud capabilities, but without rewriting the core application. The application's stable and valuable logic, combined with the need to address the outdated infrastructure, makes Replatform the best fit.",
-      "caveats": "Ensure that the cloud environment is properly configured to support the application's requirements. Address any dependencies on legacy systems before migration. Monitor the application closely during and after the migration to ensure stability and performance.",
+      "decision_reasoning": "The application Informatica PowerCenter (id: app-b02b61c4) is a COTS product with a vendor migration path to a cloud-native edition requiring only minor configuration changes. This matches the 'Replatform' pattern, which states that for COTS products with a documented cloud-native edition needing only configuration changes, the correct decision is to replatform. The application's core business logic is stable and valuable, and the infrastructure is the actual problem, aligning with the 'Replatform' pattern's criteria.",
+      "headline": "Replatform Informatica PowerCenter (id: app-b02b61c4) due to moderate risk from end-of-life OS and minor security vulnerabilities.",
+      "explanation": "Informatica PowerCenter (id: app-b02b61c4) has a risk score of 65, indicating moderate risk. The key risk factors include an end-of-life operating system and minor security vulnerabilities. However, the application is a commercial off-the-shelf (COTS) product with a vendor migration path to a cloud-native edition, which requires only minor configuration changes. This aligns with the 'Replatform' pattern, which recommends replatforming for COTS products with a documented cloud-native edition needing only configuration changes. The application\u2019s core business logic is stable and valuable, and the infrastructure is the primary issue, further supporting the replatforming decision.",
+      "caveats": "Ensure the migration process is well-documented and tested to minimize disruptions. Verify that all minor security issues are addressed before the migration. Confirm the availability and support of the cloud-native edition from the vendor.",
       "latency_seconds": 20.0,
       "matches_expected": true
     },
@@ -99,15 +124,14 @@
       "app_id": "app-0f1259e0",
       "app_name": "SAP ERP Central Component",
       "expected_6r": "REPLACE",
-      "risk_score": 92,
+      "risk_score": 90,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
-        "Mission-Critical Business",
-        "Outdated Runtime",
-        "Vendor End of Maintenance"
+        "Mission-Critical",
+        "Outdated Runtime"
       ],
-      "assessment_summary": "Urgent risk due to end-of-life OS, critical vulnerabilities, mission-critical business impact, outdated runtime, and vendor end of maintenance.",
+      "assessment_summary": "High risk due to end-of-life OS, critical vulnerabilities, mission-critical status, and outdated runtime. Urgent need for modernization.",
       "retrieved_patterns": [
         "12_gotcha_vendor_lockin.md",
         "04_pattern_replace.md",
@@ -116,11 +140,11 @@
       ],
       "decision": "Replace",
       "decision_valid": true,
-      "confidence": "High",
-      "decision_reasoning": "Given that the application is a COTS vendor product (SAP ERP Central Component) approaching end-of-support with a vendor-mandated successor (SAP S/4HANA), and considering the critical vulnerabilities and mission-critical business impact, the correct decision is Replace. This aligns with the pattern 12_gotcha_vendor_lockin.md, which states that for COTS products nearing end-of-maintenance with a clear successor, replacing is the vendor-sanctioned, lowest-friction path. The application is a pre-compiled vendor binary, making Refactor impossible, and the risk posed by critical vulnerabilities and end-of-life OS necessitates a strategic move to a modern, supported product.",
-      "headline": "Replace SAP ERP Central Component due to critical vulnerabilities, end-of-life OS, and mission-critical business impact.",
-      "explanation": "The application, SAP ERP Central Component, scores 92, indicating an urgent need for modernization. It is approaching end-of-support with a vendor-mandated successor, SAP S/4HANA. The application faces critical vulnerabilities and has a mission-critical business impact. Given these factors, the decision to replace is clear and aligns with the pattern 12_gotcha_vendor_lockin.md, which recommends replacing COTS products nearing end-of-maintenance with a clear successor. The application is a pre-compiled vendor binary, making refactoring impossible. The risk posed by critical vulnerabilities and the end-of-life OS necessitates a strategic move to a modern, supported product.",
-      "caveats": "Ensure a comprehensive assessment of the migration path to SAP S/4HANA. Identify and plan for any additional training needs for the IT and business teams. Develop a detailed timeline and budget for the replacement project to minimize disruption and ensure a smooth transition.",
+      "confidence": "Medium",
+      "decision_reasoning": "Given the high risk score of 90, the end-of-life operating system (Windows Server 2019), critical vulnerabilities, and the availability of a vendor migration path to a cloud-native edition with minimal configuration changes, the Replace decision is the most appropriate. This aligns with the modernization pattern '04_pattern_replace.md' which recommends replacing applications with newer versions or cloud-native alternatives when they are mission-critical and have significant security and operational risks. The low risk of custom code rewrite and the stability of the core business logic further support this decision.",
+      "headline": "Replace the application due to high risk from end-of-life OS, critical vulnerabilities, mission-critical status, and outdated runtime.",
+      "explanation": "The application has a high risk score of 90, indicating an urgent need for modernization. Key risk factors include an end-of-life operating system (Windows Server 2019), critical vulnerabilities, and mission-critical status. The application also has an outdated runtime, which exacerbates these risks. Given the availability of a vendor migration path to a cloud-native edition with minimal configuration changes, the Replace decision is the most appropriate. This aligns with the modernization pattern '04_pattern_replace.md', which recommends replacing applications with newer versions or cloud-native alternatives when they are mission-critical and have significant security and operational risks. The low risk of custom code rewrite and the stability of the core business logic further support this decision.",
+      "caveats": "Ensure the migration process is well-documented and tested to minimize disruptions. Verify that all critical vulnerabilities are addressed before the migration. Confirm the availability and support of the cloud-native edition from the vendor.",
       "latency_seconds": 20.0,
       "matches_expected": true
     },
@@ -128,15 +152,14 @@
       "app_id": "app-ea1fca65",
       "app_name": "Tivoli Identity Manager",
       "expected_6r": "REPLACE",
-      "risk_score": 90,
+      "risk_score": 95,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
-        "End-of-Support Runtime",
-        "High Incidents",
-        "Mission-Critical Business"
+        "End-of-Support",
+        "High Business Criticality"
       ],
-      "assessment_summary": "High risk due to end-of-life OS, critical vulnerabilities, end-of-support runtime, high operational incidents, and mission-critical business impact. Urgent need for modernization.",
+      "assessment_summary": "Urgent risk due to end-of-life OS, critical vulnerabilities, end-of-support, and high business criticality. Immediate modernization needed.",
       "retrieved_patterns": [
         "12_gotcha_vendor_lockin.md",
         "13_rationale_risk_scoring.md",
@@ -146,10 +169,10 @@
       "decision": "Replace",
       "decision_valid": true,
       "confidence": "High",
-      "decision_reasoning": "Given the high risk score (92) due to end-of-life OS, critical vulnerabilities, mission-critical business impact, and the presence of a documented vendor migration path to SAP S/4HANA, the Replace decision is the most appropriate. This aligns with the modernization pattern for COTS vendors with a clear successor and end-of-support runtime.",
-      "headline": "Replace app-0f1259e0 due to high risk from end-of-life OS, critical vulnerabilities, and mission-critical business impact.",
-      "explanation": "The application app-0f1259e0 scores 90, indicating a high risk due to an end-of-life OS (Windows Server 2019, end-of-life: 2029-01-09), critical vulnerabilities (4 CVEs, 3 of which are critical), and mission-critical business impact. The application is a COTS vendor product (SAP ECC 6.0 EHP8) with a clear successor, SAP S/4HANA, and a structured migration program provided by the vendor. Given that the application is a pre-compiled vendor binary and cannot be refactored, the Replace decision is the most appropriate. This aligns with the modernization pattern for COTS vendors with a clear successor and end-of-support runtime.",
-      "caveats": "Ensure a comprehensive assessment of the migration path to SAP S/4HANA. Identify and plan for any additional training needs for the IT and business teams. Develop a detailed timeline and budget for the replacement project to minimize disruption and ensure a smooth transition. Address dependencies on SAP ERP (instance 2) and Secure-KyvValidationLedger, and coordinate with Informatica PowerCenter, svc-payment-api-grow, and GlobalPayrollEngine-798 to ensure minimal impact during the transition.",
+      "decision_reasoning": "The application is a COTS product (IBM Tivoli Identity Manager v7.0.1) approaching end-of-support with critical vulnerabilities and an end-of-life OS (Windows Server 2019). The vendor offers a modern SaaS successor (IBM Security Verify) with a defined migration path. This matches the pattern described in '04_pattern_replace.md', which recommends replacing a vendor product nearing end-of-support with a successor product. The high business criticality and urgency due to critical vulnerabilities further support this decision.",
+      "headline": "Replace IBM Tivoli Identity Manager v7.0.1 due to urgent risk from end-of-life OS, critical vulnerabilities, end-of-support, and high business criticality.",
+      "explanation": "The application IBM Tivoli Identity Manager v7.0.1 has a risk score of 95, indicating an urgent need for modernization. Key risk factors include an end-of-life operating system (Windows Server 2019), critical vulnerabilities, and end-of-support. The application is a commercial off-the-shelf (COTS) product nearing end-of-support, and the vendor offers a modern Software-as-a-Service (SaaS) successor (IBM Security Verify) with a defined migration path. This aligns with the pattern described in '04_pattern_replace.md', which recommends replacing a vendor product nearing end-of-support with a successor product. The high business criticality and urgency due to critical vulnerabilities further support this decision.",
+      "caveats": "Ensure the migration process is well-documented and tested to minimize disruptions. Verify that all critical vulnerabilities are addressed before the migration. Confirm the availability and support of the SaaS successor from the vendor.",
       "latency_seconds": 20.0,
       "matches_expected": true
     },
@@ -159,12 +182,11 @@
       "expected_6r": "REHOST",
       "risk_score": 75,
       "key_risk_factors": [
-        "End-of-life OS",
+        "EOL OS",
         "Critical CVEs",
-        "High Incidents",
-        "Outdated Runtime"
+        "High Incidents"
       ],
-      "assessment_summary": "Moderate risk due to end-of-life OS, critical vulnerabilities, high operational incidents, and outdated runtime. Urgent need for modernization.",
+      "assessment_summary": "Moderate risk due to end-of-life OS, critical vulnerabilities, and high operational incidents. Urgent need for modernization.",
       "retrieved_patterns": [
         "12_gotcha_vendor_lockin.md",
         "01_pattern_rehost.md",
@@ -173,25 +195,25 @@
       ],
       "decision": "Replace",
       "decision_valid": true,
-      "confidence": "High",
-      "decision_reasoning": "Given the application is a COTS product (Carbon Black App Control v8.9.2) with a pre-compiled binary, and the vendor offers a successor product with a well-documented migration path, the Replace decision is the most appropriate. This aligns with the pattern 12_gotcha_vendor_lockin.md, which states that for COTS products with a clear successor, the correct decision is Replace. The high risk score (75) due to end-of-life OS, critical vulnerabilities, and high operational incidents further supports this decision.",
-      "headline": "Replace Carbon Black App Control v8.9.2 due to moderate risk from end-of-life OS, critical vulnerabilities, and high operational incidents.",
-      "explanation": "The application, Carbon Black App Control v8.9.2, scores 75, indicating a moderate risk due to an end-of-life OS, critical vulnerabilities, and high operational incidents. The application is a COTS product with a pre-compiled binary, and the vendor offers a successor product with a well-documented migration path. Given these factors, the Replace decision is the most appropriate. This aligns with the pattern 12_gotcha_vendor_lockin.md, which recommends replacing COTS products with a clear successor. The high risk score further supports the need for immediate action to mitigate these risks.",
-      "caveats": "Ensure a comprehensive assessment of the migration path to the successor product. Identify and plan for any additional training needs for the IT and business teams. Develop a detailed timeline and budget for the replacement project to minimize disruption and ensure a smooth transition.",
+      "confidence": "Medium",
+      "decision_reasoning": "",
+      "headline": "Replace Tivoli Identity Manager due to moderate risk from end-of-life OS, critical vulnerabilities, and high operational incidents.",
+      "explanation": "Tivoli Identity Manager has a risk score of 75, indicating a moderate but urgent need for modernization. Key risk factors include an end-of-life operating system (Windows Server 2019), critical vulnerabilities (5 CVEs, 3 of which are critical), and high operational incidents. The vendor offers a modern Software-as-a-Service (SaaS) successor (IBM Security Verify) with a defined migration path, making it the most viable option. Replacing the application with the SaaS solution ensures security, stability, and ongoing support, aligning with the highest level of business criticality and reducing operational overhead.",
+      "caveats": "Ensure the migration process is well-documented and tested to minimize disruptions. Verify that all critical vulnerabilities are addressed before the migration. Confirm the availability and support of the SaaS successor from the vendor.",
       "latency_seconds": 20.0,
       "matches_expected": false
     },
     {
-      "app_id": "app-b45ed1f0",
-      "app_name": "Secure-KyvValidationLedger",
+      "app_id": "app-4bf50b52",
+      "app_name": "Secure-AuditTrailVault",
       "expected_6r": "RETAIN",
-      "risk_score": 15,
+      "risk_score": 30,
       "key_risk_factors": [
-        "Low CVE Count",
-        "High Availability",
-        "No Incidents"
+        "EOL OS",
+        "Low CVEs",
+        "Stable Operations"
       ],
-      "assessment_summary": "Low risk due to low CVE count, high availability, and no incidents. No immediate urgency for modernization.",
+      "assessment_summary": "Low risk due to low vulnerability count, stable operations, and regulatory constraints preventing immediate migration.",
       "retrieved_patterns": [
         "11_gotcha_compliance_deferral.md",
         "13_rationale_risk_scoring.md",
@@ -201,29 +223,46 @@
       "decision": "Retain",
       "decision_valid": true,
       "confidence": "High",
-      "decision_reasoning": "The application Secure-KyvValidationLedger is mission-critical but has been recently modernized, operates on a supported OS, and has excellent operational health with zero incidents and high availability. These signals align with the 'Pattern: Retain (Revisit Later)' where the application is recently modernised, has excellent operational health, and no business case to change it. Additionally, the compliance team has explicitly flagged it as out of scope for modernisation until the 2027 review cycle, which further supports the 'Retain with review date' decision. The low risk score of 15, driven by low CVE count, high availability, and no incidents, also reinforces this choice.",
-      "headline": "Retain Secure-KyvValidationLedger due to low risk from low CVE count, high availability, and no incidents.",
-      "explanation": "The application Secure-KyvValidationLedger scores 15, indicating a low risk due to a low CVE count, high availability, and no incidents. The application is mission-critical but has been recently modernized, operates on a supported OS, and has excellent operational health with zero incidents and high availability. These signals align with the 'Pattern: Retain (Revisit Later)' where the application is recently modernized, has excellent operational health, and no business case to change it. Additionally, the compliance team has explicitly flagged it as out of scope for modernization until the 2027 review cycle, which further supports the 'Retain with review date' decision. The low risk score of 15, driven by low CVE count, high availability, and no incidents, also reinforces this choice.",
-      "caveats": "Schedule a review of Secure-KyvValidationLedger in 2027 to reassess its status and determine if any modernization efforts are needed. Ensure regular updates and monitoring to maintain its operational health and security.",
+      "decision_reasoning": "The application Secure-AuditTrailVault has a low risk score (30) and is in a regulatory-critical state, with a 18-month re-certification constraint before any infrastructure migration can occur. This constraint is a compliance requirement that overrides the technical signals, aligning with the '11_gotcha_compliance_deferral.md' pattern. The application is recently modernised, has excellent operational health, and few security findings, making it a candidate for 'Retain' as per the '09_antipattern_retain_insecure.md' and '06_pattern_retain.md' patterns.",
+      "headline": "Retain Secure-AuditTrailVault due to low risk from low vulnerability count, stable operations, and regulatory constraints preventing immediate migration.",
+      "explanation": "Secure-AuditTrailVault has a low risk score of 30, indicating minimal risk. The application is in a regulatory-critical state with a 18-month re-certification constraint before any infrastructure migration can occur. This constraint is a compliance requirement that overrides the technical signals, aligning with the '11_gotcha_compliance_deferral.md' pattern. The application is recently modernized, has excellent operational health, and few security findings, making it a candidate for 'Retain' as per the '09_antipattern_retain_insecure.md' and '06_pattern_retain.md' patterns.",
+      "caveats": "Ensure compliance requirements are met within the 18-month re-certification period. Monitor security findings and address any new vulnerabilities promptly. Maintain operational health and stability to avoid unexpected disruptions.",
+      "latency_seconds": 20.0,
+      "matches_expected": true
+    },
+    {
+      "app_id": "app-b45ed1f0",
+      "app_name": "Secure-KyvValidationLedger",
+      "expected_6r": "RETAIN",
+      "risk_score": 20,
+      "key_risk_factors": [
+        "EOL OS",
+        "Low CVEs",
+        "Stable Operations"
+      ],
+      "assessment_summary": "Low risk due to low vulnerability count, stable operations, and compliance team's explicit out-of-scope status until 2027.",
+      "retrieved_patterns": [
+        "11_gotcha_compliance_deferral.md",
+        "13_rationale_risk_scoring.md",
+        "09_antipattern_retain_insecure.md",
+        "06_pattern_retain.md"
+      ],
+      "decision": "Retain",
+      "decision_valid": true,
+      "confidence": "Medium",
+      "decision_reasoning": "",
+      "headline": "Retain Secure-AuditTrailVault due to low risk from low vulnerability count, stable operations, and compliance team's explicit out-of-scope status until 2027.",
+      "explanation": "Secure-AuditTrailVault has a low risk score of 20, indicating minimal risk. The application is mission-critical and runs on an end-of-life operating system (RedHat Enterprise Linux 8). However, it has no critical vulnerabilities and excellent operational health with zero incidents and high availability. Additionally, the application is explicitly flagged as out-of-scope for modernization until 2027, which aligns with the regulatory requirements. Given these factors, the most appropriate decision is to Retain the application to avoid unnecessary costs and risks associated with modernization.",
+      "caveats": "Continue monitoring the application for any new vulnerabilities or operational issues. Ensure compliance with regulatory requirements until 2027. Plan for a modernization strategy after 2027 to address the end-of-life OS and other potential risks.",
       "latency_seconds": 20.0,
       "matches_expected": true
     }
   ],
   "errors": [
     {
-      "app_id": "app-17be3111",
-      "app_name": "MainframeSettlementWrapper-314",
-      "error": "1 validation error for DecisionOutput\nconfidence\n  Field required [type=missing, input_value={'decision': 'Retire', 'c...ve historical reports.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"
-    },
-    {
-      "app_id": "app-b02b61c4",
-      "app_name": "Informatica PowerCenter",
-      "error": "2 validation errors for DecisionOutput\nconfidence\n  Field required [type=missing, input_value={'decision': 'Rehost'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\nreasoning\n  Field required [type=missing, input_value={'decision': 'Rehost'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"
-    },
-    {
-      "app_id": "app-4bf50b52",
-      "app_name": "Secure-AuditTrailVault",
-      "error": "1 validation error for DecisionOutput\nconfidence\n  Field required [type=missing, input_value={'decision': 'Retain', 'r...support this decision.\"}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"
+      "app_id": "app-655238a6",
+      "app_name": "CoreBillingLedger-159",
+      "error": "1 validation error for DecisionOutput\ndecision\n  Field required [type=missing, input_value={'Decision': 'Retire', 'R...isks and reduce costs.\"}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.11/v/missing"
     }
   ]
 }

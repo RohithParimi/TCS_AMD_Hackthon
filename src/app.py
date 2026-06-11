@@ -77,18 +77,7 @@ def risk_color(score: int) -> str:
     return "#4ade80"
 
 # ----------------------------------------------------------------------------- 
-# Header
-# -----------------------------------------------------------------------------
-st.markdown(
-    "<h1 style='margin-bottom:0'>🧭 ModernizeIQ</h1>"
-    "<p style='color:#94a3b8;margin-top:4px'>AI-powered application modernization advisor "
-    "&nbsp;·&nbsp; TCS × AMD AI Hackathon &nbsp;·&nbsp; "
-    f"<span style='font-family:JetBrains Mono,monospace'>{LLM_MODEL}</span></p>",
-    unsafe_allow_html=True,
-)
-
-# ----------------------------------------------------------------------------- 
-# Load results
+# Load results  (this section stays where it is)
 # -----------------------------------------------------------------------------
 if not os.path.exists(RESULTS_PATH):
     st.warning("No results yet. Run the batch pipeline first:  `uv run src/run_all.py`")
@@ -99,6 +88,17 @@ with open(RESULTS_PATH) as f:
 
 meta = payload["meta"]
 results = payload["results"]
+
+# ----------------------------------------------------------------------------- 
+# Header  (moved here — meta now exists)
+# -----------------------------------------------------------------------------
+st.markdown(
+    "<h1 style='margin-bottom:0'>🧭 ModernizeIQ</h1>"
+    "<p style='color:#94a3b8;margin-top:4px'>AI-powered application modernization advisor "
+    "&nbsp;·&nbsp; TCS × AMD AI Hackathon &nbsp;·&nbsp; "
+    f"<span style='font-family:JetBrains Mono,monospace'>{meta['model']}</span></p>",
+    unsafe_allow_html=True,
+)
 
 # ----------------------------------------------------------------------------- 
 # Portfolio metrics row

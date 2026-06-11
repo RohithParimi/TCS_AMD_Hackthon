@@ -85,7 +85,8 @@ def extract_json(text: str) -> dict:
     start, end = text.find("{"), text.rfind("}")
     if start != -1 and end != -1 and end > start:
         text = text[start:end + 1]
-    return json.loads(text)
+    data = json.loads(text)
+    return {k.lower(): v for k, v in data.items()}   # <-- the new line
 
 def parse_or_raise(raw: str, model, label: str):
     try:
