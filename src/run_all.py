@@ -19,12 +19,13 @@ import sys
 import json
 import time
 from datetime import datetime, timezone
+from langsmith import traceable
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import DATA_PATH, LLM_MODEL  # noqa: E402
 from crew import analyze_app  # noqa: E402
 
-
+@traceable
 def main():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     with open(os.path.join(root, DATA_PATH)) as f:
@@ -42,7 +43,11 @@ def main():
         print(f"[{idx}/{len(apps)}] {name} (expected {app.get('expected_6r')}) ... ", end="", flush=True)
         t0 = time.time()
         try:
-            r = analyze_app(app)
+            try:
+                r = analyze_app(app)
+            except Exception:
+                print("retry... ", end="", flush=True)
+                r = analyze_app(app)
             dt = round(time.time() - t0, 1)
             latencies.append(dt)
             r["latency_seconds"] = dt

@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "crewai[litellm]>=1.14.3",
+    "langsmith>=0.8.11",
     "openai>=2.41.0",
+    "openinference-instrumentation-crewai>=1.1.9",
+    "openinference-instrumentation-openai>=0.1.51",
     "sentence-transformers>=5.5.1",
 ]

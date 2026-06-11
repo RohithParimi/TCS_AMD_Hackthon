@@ -19,6 +19,28 @@ import sys
 import json
 from pydantic import BaseModel, Field, ValidationError
 from crewai import Agent, Task, Crew, Process, LLM
+from langsmith.integrations.otel import OtelSpanProcessor
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from openinference.instrumentation.crewai import CrewAIInstrumentor
+from openinference.instrumentation.openai import OpenAIInstrumentor
+import dotenv
+
+dotenv.load_dotenv(".env.local")
+
+# Configure OpenTelemetry
+tracer_provider = trace.get_tracer_provider()
+if not isinstance(tracer_provider, TracerProvider):
+    tracer_provider = TracerProvider()
+    trace.set_tracer_provider(tracer_provider)
+
+# Add OtelSpanProcessor to the tracer provider
+tracer_provider.add_span_processor(OtelSpanProcessor())
+
+# Instrument CrewAI and OpenAI
+CrewAIInstrumentor().instrument()
+OpenAIInstrumentor().instrument()
+
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from config import LLM_BASE_URL, LLM_MODEL, LLM_API_KEY, DATA_PATH  # noqa: E402
@@ -46,8 +68,8 @@ class AssessmentOutput(BaseModel):
 
 class DecisionOutput(BaseModel):
     decision: str
-    confidence: str
-    reasoning: str
+    confidence: str = "Medium"
+    reasoning: str = ""
 
 class ExplanationOutput(BaseModel):
     headline: str
@@ -190,6 +212,7 @@ def analyze_app(app: dict) -> dict:
             '{"decision": "<one of: Rehost, Replatform, Refactor, Replace, Retire, Retain>", '
             '"confidence": "<High, Medium, or Low>", '
             '"reasoning": "<why this decision, citing the retrieved pattern(s) and the app data>"}'
+            'ALL three keys are REQUIRED — never omit confidence or reasoning.'
         ),
         agent=decision_agent,
         context=[assessment_task],
